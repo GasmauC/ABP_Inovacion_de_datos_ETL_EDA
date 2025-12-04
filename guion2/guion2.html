@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación ABP v2: Análisis Estratégico</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de la fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo base con la fuente Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Estilo para las diapositivas */
+        .slide {
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 4rem;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease-in-out, visibility 0.6s;
+            box-sizing: border-box; /* Asegura que el padding no desborde */
+        }
+        /* Estilo para la diapositiva activa */
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 10;
+        }
+        /* Contenedor de dos columnas para texto e imagen */
+        .slide-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            align-items: center;
+        }
+        /* Contenido de solo texto (centrado) */
+        .slide-content-text-only {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+        }
+        /* Estilo para las imágenes en las diapositivas */
+        .slide-image {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 0.5rem;
+            background-color: #ffffff; /* Fondo blanco para gráficos */
+            padding: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        /* Estilo para el texto en las diapositivas */
+        .slide-text {
+            text-align: left;
+        }
+        /* Estilos de los botones de navegación */
+        .nav-button {
+            position: fixed;
+            bottom: 2rem;
+            z-index: 20;
+            background-color: #0891b2; /* Cyan-600 */
+            color: white;
+            border-radius: 9999px;
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            user-select: none;
+            box-shadow: 0 4px 14px rgba(8, 145, 178, 0.5);
+        }
+        .nav-button:hover {
+            background-color: #0e7490; /* Cyan-700 */
+        }
+        .nav-button:disabled {
+            background-color: #6b7280; /* Gray-500 */
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 overflow-hidden">
+
+    <!-- Contenedor de Diapositivas -->
+    <div id="slide-deck">
+
+        <!-- Diapositiva 1: Título -->
+        <div class="slide active">
+            <div class="slide-content-text-only">
+                <h1 class="text-5xl md:text-7xl font-black text-cyan-400 mb-6 tracking-tight">
+                    Análisis Estratégico de Patrones de Compra
+                </h1>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">
+                    en el Sector Retail
+                </h2>
+                <p class="text-2xl text-gray-400">
+                    Integrantes: Gastón, Marcelo, Sergio, Nemesis, Leonardo
+                </p>
+                <p class="text-lg text-gray-500 mt-20">
+                    (Grupo: Innovación de Datos)
+                </p>
+            </div>
+        </div>
+
+        <!-- Diapositiva 2: El Problema -->
+        <div class="slide">
+            <div class="slide-content-text-only">
+                <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-8">
+                    El Problema: Datos sin Inteligencia
+                </h1>
+                <p class="text-3xl md:text-4xl font-bold text-white max-w-5xl leading-tight mb-8">
+                    "Una empresa puede tener miles de datos y, aun así, estar completamente a ciegas."
+                </p>
+                <p class="text-xl md:text-2xl text-gray-300 mb-4 max-w-4xl">
+                    El cliente tenía un volumen masivo de datos (casi 100,000 registros), pero no la capacidad de convertirlos en inteligencia de negocio.
+                </p>
+                <p class="text-lg md:text-xl text-gray-400 italic max-w-4xl">
+                    Sus estrategias eran genéricas, su inventario reactivo y perdían oportunidades de fidelización.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Diapositiva 3: El Objetivo -->
+        <div class="slide">
+            <div class="slide-content-text-only">
+                <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-8">
+                    El Objetivo: De Datos Crudos a Hoja de Ruta
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl">
+                    Nuestro objetivo no fue solo "analizar datos", fue <span class="font-bold text-white">transformar datos crudos en una hoja de ruta accionable</span> para la gerencia.
+                </p>
+                <p class="text-2xl md:text-3xl font-bold text-cyan-300 italic max-w-5xl leading-tight">
+                    Pregunta Clave: ¿Cómo usamos los patrones de comportamiento para diseñar estrategias que impulsen el crecimiento y la rentabilidad?
+                </p>
+            </div>
+        </div>
+
+        <!-- Diapositiva 4: Metodología -->
+        <div class="slide">
+            <div class="slide-content-text-only">
+                <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-8">
+                    Metodología: El Cimiento del Análisis
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl">
+                    Ejecutamos un proceso completo de <span class="font-bold text-cyan-300">ETL (Extracción, Transformación y Carga)</span> usando Python y Pandas para asegurar la calidad de los datos.
+                </p>
+                <ul class="list-disc list-inside text-left max-w-2xl text-lg md:text-xl space-y-4">
+                    <li>
+                        <span class="font-bold">Unir Datasets:</span> Integramos `customer_data` y `sales_data` (visión completa).
+                    </li>
+                    <li>
+                        <span class="font-bold">Limpiar Datos:</span> Manejamos valores nulos en "age" (edad) imputándolos con la mediana (para no sesgar).
+                    </li>
+                    <li>
+                        <span class="font-bold">Estandarizar:</span> Convertimos fechas a `datetime` y números a enteros para poder operar.
+                    </li>
+                </ul>
+                <p class="text-lg text-gray-400 mt-8 max-w-4xl italic">
+                    Este proceso de Data Wrangling es fundamental para construir un análisis confiable.
+                </p>
+            </div>
+        </div>
+
+        <!-- Diapositiva 5: Hallazgo 1 - Pagos -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="slide-text">
+                    <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-6">
+                        Hallazgo 1: Hábito Arraigado (La Fuga de Datos)
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-4">
+                        El primer hallazgo fue contundente: <span class="font-bold text-white">casi la mitad (44.7%)</span> de las compras se realizan en <span class="font-bold text-white">Efectivo (Cash)</span>.
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-300 mb-4">
+                        Esto es más que un dato curioso; es el principal problema de la empresa.
+                    </p>
+                    <p class="text-xl md:text-2xl font-bold text-cyan-300 italic">
+                        Problema: Un pago en efectivo es una transacción anónima. Perdemos la trazabilidad de casi el 50% de los clientes, impidiendo fidelizarlos.
+                    </p>
+                </div>
+                <div>
+                    <!-- Imagen de la torta de pagos -->
+                    <img src="ABP_inovacion_datos-10-14-2025_07_58_PM.png" alt="Distribución de Métodos de Pago" class="slide-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Diapositiva 6: Hallazgo 2 - Demografía -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="slide-text">
+                    <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-6">
+                        Hallazgo 2: Un Mercado Intergeneracional
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-4">
+                        Contrario a lo esperado, no existe un segmento de edad dominante.
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-300 mb-4">
+                        La distribución es <span class="font-bold text-white">increíblemente uniforme desde los 18 hasta los 69 años</span>, con una edad promedio de 43.4 años.
+                    </p>
+                    <p class="text-xl md:text-2xl font-bold text-cyan-300 italic">
+                        Desafío: Es una fortaleza de atractivo amplio, pero requiere una comunicación segmentada. No podemos usar el mismo mensaje para todos.
+                    </p>
+                </div>
+                <div>
+                    <!-- Histograma de Edades -->
+                    <img src="1.png" alt="Distribución de Edades de Compradores" class="slide-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Diapositiva 7: Hallazgo 3 - Volumen vs. Valor -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="slide-text">
+                    <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-6">
+                        Hallazgo 3: El Doble Motor de Ingresos
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-4">
+                        Descubrimos que el negocio funciona con un "doble motor":
+                    </p>
+                    <ul class="list-disc list-inside text-left text-lg md:text-xl space-y-3 mb-6">
+                        <li>
+                            <span class="font-bold text-white">Motor de Volumen:</span> Liderado por <span class="font-bold">'Clothing' (Ropa)</span>. Genera tráfico masivo (35k transacciones) a precio moderado.
+                        </li>
+                        <li>
+                            <span class="font-bold text-white">Motor de Valor:</span> Impulsado por <span class="font-bold">'Technology' y 'Shoes'</span>. Menos transacciones, pero precio 3-4 veces mayor. Disparan la rentabilidad.
+                        </li>
+                    </ul>
+                    <p class="text-xl md:text-2xl font-bold text-cyan-300 italic">
+                        Estrategia: Usar el volumen de 'Clothing' para generar venta cruzada (cross-selling) hacia las categorías de 'Valor'.
+                    </p>
+                </div>
+                <div>
+                    <!-- Gráfico de Barras: Precio Promedio por Categoría -->
+                    <img src="5.png" alt="Precio Promedio por Categoría" class="slide-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Diapositiva 8: Hallazgo 4 - Ubicación -->
+        <div class="slide">
+            <div class="slide-content-text-only">
+                <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-8">
+                    Hallazgo 4: Polos de Crecimiento (Ubicación)
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl">
+                    Analizamos las 10 ubicaciones y encontramos un hallazgo crítico.
+                </p>
+                <p class="text-3xl md:text-4xl font-bold text-white max-w-5xl leading-tight">
+                    El <span class="text-cyan-300">40% de TODO el negocio</span> se concentra en solo dos centros comerciales: <span class="text-cyan-300">'Mall of Istanbul'</span> y <span class="text-cyan-300">'Kanyon'</span>.
+                </p>
+                <p class="text-2xl text-gray-400 mt-8 max-w-4xl italic">
+                    Estos dos shoppings son los epicentros del negocio.
+                </p>
+            </div>
+        </div>
+
+        <!-- Diapositiva 9: Hallazgo 4 cont. (Micro-Mercados) -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="slide-text">
+                     <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-6">
+                        Hallazgo 4 (cont.): Micro-Mercados
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-4">
+                        Tratar a todas las tiendas por igual es un error costoso.
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-300 mb-4">
+                        Cada centro comercial es un <span class="font-bold text-white">micro-mercado con un perfil de consumo único</span>. (Ej. jóvenes en Kanyon compran más tecnología que en Metropol).
+                    </p>
+                    <p class="text-xl md:text-2xl font-bold text-cyan-300 italic">
+                        Conclusión: El crecimiento no está en el marketing masivo, sino en la personalización a nivel local, empezando por esos dos malls.
+                    </p>
+                </div>
+                <div>
+                    <!-- Mosaico de Gráficos por Mall -->
+                    <img src="9.png" alt="Top 2 categorías por grupo etario en cada Shopping Mall" class="slide-image max-h-[75vh]">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Diapositiva 10: Hallazgo 5 - Género -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="slide-text">
+                    <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-6">
+                        Hallazgo 5: El Rol del Género en el Volumen
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-4">
+                        Si bien la edad es diversa, el género muestra una tendencia clara: el <span class="font-bold text-white">público femenino</span> es el principal motor de las categorías de alto volumen.
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-300 mb-4">
+                        Representan el <span class="font-bold text-white">60% de las transacciones</span> y dominan abrumadoramente en 'Clothing' y 'Cosmetics'.
+                    </p>
+                    <p class="text-xl md:text-2xl font-bold text-cyan-300 italic">
+                        Afinación: La comunicación visual y las campañas para categorías de tráfico deben conectar prioritariamente con una audiencia femenina.
+                    </p>
+                </div>
+                <div>
+                    <!-- Gráfico de Barras: Volumen de Compras por Género y Categoría -->
+                    <img src="10.png" alt="Volumen de Compras por Género y Categoría" class="slide-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Diapositiva 11: Conclusiones -->
+        <div class="slide">
+            <div class="slide-content-text-only">
+                <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-10">
+                    Conclusiones: Cuatro Verdades Fundamentales
+                </h1>
+                <ol class="list-decimal list-inside text-left max-w-3xl text-2xl md:text-3xl space-y-6">
+                    <li class="text-cyan-300">
+                        <span class="text-white">Brecha Digital:</span> El alto uso de efectivo impide conocer al cliente.
+                    </li>
+                    <li class="text-cyan-300">
+                        <span class="text-white">Mercado Intergeneracional:</span> Se requiere marketing diversificado.
+                    </li>
+                    <li class="text-cyan-300">
+                        <span class="text-white">Balance Estratégico:</span> La rentabilidad depende del balance Valor vs. Volumen.
+                    </li>
+                    <li class="text-cyan-300">
+                        <span class="text-white">Crecimiento Futuro:</span> Pasa por la personalización local, no masiva.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Diapositiva 12: Recomendación 1 -->
+        <div class="slide">
+            <div class="slide-content-text-only">
+                <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-8">
+                    Recomendación 1: "Club de Beneficios"
+                </h1>
+                <div class="bg-gray-800 p-8 rounded-lg border border-cyan-700 max-w-3xl text-left">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-3">Problema que Resuelve:</h2>
+                    <p class="text-xl text-white mb-6">La fuga de datos por el pago en efectivo.</p>
+                    
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-3">La Acción:</h2>
+                    <p class="text-xl text-white">Lanzar un programa de lealtad gratuito.</p>
+                    <p class="text-xl font-bold text-white bg-cyan-600 p-3 rounded-md mt-2 inline-block">Beneficio Clave: "Paga con tarjeta y gana el DOBLE de puntos."</p>
+                    <p class="text-xl text-gray-300 mt-3 italic">Esto incentiva la digitalización y nos da trazabilidad.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diapositiva 13: Recomendación 2 -->
+        <div class="slide">
+            <div class="slide-content-text-only">
+                <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-8">
+                    Recomendación 2: Plan Piloto "Marketing de Precisión"
+                </h1>
+                <div class="bg-gray-800 p-8 rounded-lg border border-cyan-700 max-w-3xl text-left">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-3">Problema que Resuelve:</h2>
+                    <p class="text-xl text-white mb-6">El marketing genérico e ineficiente.</p>
+                    
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-3">La Acción:</h2>
+                    <p class="text-xl text-white mb-3">Enfocar recursos durante 6 meses solo en <span class="font-bold">'Kanyon' y 'Mall of Istanbul'</span> (el 40% del negocio).</p>
+                    <p class="text-xl text-white">Usar datos del "Club" para enviar ofertas personalizadas por email.</p>
+                    <p class="text-lg text-gray-300 mt-3 italic">Ej: "Vimos que te gusta la tecnología, tienes un 15% en computación esta semana."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diapositiva 14: Recomendación 3 -->
+        <div class="slide">
+            <div class="slide-content-text-only">
+                <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 mb-8">
+                    Recomendación 3: Aumentar el Valor de Cada Visita
+                </h1>
+                <div class="bg-gray-800 p-8 rounded-lg border border-cyan-700 max-w-3xl text-left">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-3">Problema que Resuelve:</h2>
+                    <p class="text-xl text-white mb-6">Conectar el motor de Volumen con el de Valor.</p>
+                    
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-3">La Acción:</h2>
+                    <p class="text-xl text-white mb-3">Implementar ofertas inteligentes de <span class="font-bold">venta cruzada (cross-selling)</span> en caja.</p>
+                    <p class="text-lg text-gray-300 mt-3 italic">Ej: "¡Felicidades por tu compra de Ropa! Por eso, hoy tienes un 20% de descuento en Calzado."</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Diapositiva 15: Cierre -->
+        <div class="slide">
+            <div class="slide-content-text-only">
+                <h1 class="text-5xl md:text-7xl font-black text-cyan-400 mb-8 tracking-tight">
+                    Conclusión: De Reactivo a Precisión
+                </h1>
+                <p class="text-2xl md:text-3xl text-gray-300 max-w-4xl mb-12">
+                    Este proyecto demuestra cómo la ciencia de datos nos permite pasar de un modelo de negocio reactivo a una estrategia de precisión, usando la inteligencia para impulsar el crecimiento.
+                </p>
+                <h2 class="text-4xl md:text-5xl font-bold text-white">
+                    Muchas Gracias.
+                </h2>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Controles de Navegación -->
+    <button id="prev" class="nav-button" style="left: 2rem;">
+        &lt;
+    </button>
+    <button id="next" class="nav-button" style="right: 2rem;">
+        &gt;
+    </button>
+
+    <!-- Contador de Diapositivas -->
+    <div id="slide-counter" class="fixed bottom-10 left-1/2 -translate-x-1/2 text-gray-400 text-lg z-20">
+        1 / 15
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevButton = document.getElementById('prev');
+            const nextButton = document.getElementById('next');
+            const counter = document.getElementById('slide-counter');
+            let currentSlide = 0;
+            const totalSlides = slides.length; // Total de 15 diapositivas
+
+            function showSlide(index) {
+                // Oculta la diapositiva actual
+                slides[currentSlide].classList.remove('active');
+                
+                // Asegura que el índice esté dentro de los límites
+                if (index >= totalSlides) {
+                    currentSlide = totalSlides - 1;
+                } else if (index < 0) {
+                    currentSlide = 0;
+                } else {
+                    currentSlide = index;
+                }
+
+                // Muestra la nueva diapositiva
+                slides[currentSlide].classList.add('active');
+
+                // Actualiza el contador
+                counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+                // Habilita/deshabilita botones
+                prevButton.disabled = currentSlide === 0;
+                nextButton.disabled = currentSlide === totalSlides - 1;
+            }
+
+            // Event Listeners para los botones
+            prevButton.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+            });
+
+            nextButton.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+            });
+
+            // Navegación con teclas de flecha
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === ' ') { // Espacio o flecha derecha
+                    if (currentSlide < totalSlides - 1) {
+                        showSlide(currentSlide + 1);
+                    }
+                } else if (e.key === 'ArrowLeft') { // Flecha izquierda
+                    if (currentSlide > 0) {
+                        showSlide(currentSlide - 1);
+                    }
+                }
+            });
+
+            // Inicializa la primera diapositiva
+            showSlide(0);
+        });
+    </script>
+
+</body>
+</html>
