@@ -25,8 +25,8 @@ El flujo de trabajo sigue el ciclo de vida estándar de la Ciencia de Datos:
 
 ```mermaid
 graph LR
-A[Datos Crudos CSV] --> B(Limpieza con Pandas);
-B --> C{Transformación & Enriquecimiento};
-C --> D[Carga a SQL / CSV Limpio];
-D --> E[Análisis Exploratorio (EDA)];
-E --> F[Insights & Estrategia];
+    A["Datos Crudos CSV"] --> B("Limpieza con Pandas")
+    B --> C{"Transformación y Enriquecimiento"}
+    C --> D["Carga a SQL / CSV Limpio"]
+    D --> E["Análisis Exploratorio (EDA)"]
+    E --> F["Estrategia de Negocio"]
